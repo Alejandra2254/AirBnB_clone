@@ -10,10 +10,21 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """Constructor function,
         using arguments *Args, **kwargs"""
-        self.id = str(uuid.uuid1())
-        date_format = "%Y-%m-%dT%H:%M:%S.%f"
-        self.created_at = datetime.now()
-        self.updated_at = self.created_at
+        if kwargs:
+            date_format = "%Y-%m-%dT%H:%M:%S.%f"
+            for key, value in kwargs.items():
+                if key == 'id':
+                    self.id = str(uuid.uuid1())
+                if key == 'created_at':
+                    self.created_at = datetime.strptime(value, date_format)
+                if key == 'updated_at':
+                    self.updated_at = datetime.strptime(value, date_format)
+                if key != '__class__':
+                    setattr(self, key, value)
+        else:
+            self.id = str(uuid.uuid1())
+            self.created_at = datetime.now()
+            self.updated_at = self.created_at
     
     def __str__(self):
         """String representation"""
