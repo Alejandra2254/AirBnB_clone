@@ -11,7 +11,6 @@ from models.amenity import Amenity
 from models.review import Review
 from models.place import Place
 
-
 classes = {"BaseModel": BaseModel, "User": User, "City": City, "State": State,
            "Amenity": Amenity, "Review": Review, "Place": Place}
 
