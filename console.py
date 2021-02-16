@@ -20,7 +20,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, input):
         """ exit command  """
-        exit()
+        return True
 
     def do_EOF(self, input):
         """ exit command """
