@@ -5,7 +5,13 @@ import sys
 from models import storage
 from models.base_model import BaseModel
 from models.user import User
-classes = {"BaseModel": BaseModel, "User": User}
+from models.city import City
+from models.state import State
+from models.amenity import Amenity
+from models.review import Review
+from models.place import Place
+classes = {"BaseModel": BaseModel, "User": User, "City": City, "State": State,
+           "Amenity": Amenity, "Review": Review, "Place": Place}
 
 
 class HBNBCommand(cmd.Cmd):
@@ -36,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
             print(new_instance.id)
         else:
             print("** class doesn't exist **")
-    
+
     def do_show(self, arg):
         """Prints the string representation of an instance
         based on the class name and id"""
@@ -54,16 +60,47 @@ class HBNBCommand(cmd.Cmd):
                     print(obj)
                 except KeyError:
                     print("** class doesn't exist **")
-    
-    def do_delete(self, arg):
+
+    def do_destroy(self, arg):
         """Deletes an instance based on the class name and id"""
+        args = parse(arg)
+        if args == []:
+            print("** class name missing **")
+        elif args[0] in classes:
+            if len(args) > 1:
+                key = args[0] + "." + args[1]
+                if key in storage.all():
+                    storage.all().pop(key)
+                    storage.save()
+                else:
+                    print("** no instance found **")
+            else:
+                print("** instance id missing **")
+        else:
+            print("** class doesn't exist **")
+
+    def do_all(self, arg):
+        """Prints string representations of instances"""
+        args = parse(arg)
+        obj_list = []
+        obj_dict = storage.all()
+        if args == []:
+            for obj in obj_dict.values():
+                print(obj)
+        elif args[0] in classes:
+            for keys in obj_dict:
+                key = keys.split(".")[0]
+                if key == args[0]:
+                    print(obj_dict[keys])
+        else:
+            print("** class doesn't exist **")
+            return False
 
 
 def parse(arg):
     """Convert a series of zero or more numbers to an
     argument list"""
     return list(map(str, arg.split()))
-
 
     """ HELPS """
 
