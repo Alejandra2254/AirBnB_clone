@@ -30,7 +30,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_emptyline(self):
         """ empty line """
-        pass
+        return false
 
     def do_create(self, arg):
         """ Creates a new instance, depending of the class
