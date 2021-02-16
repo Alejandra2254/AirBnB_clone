@@ -95,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
             return False
-        
+
     def do_update(self, arg):
         """Update an instance based on the class name, id, attribute & value"""
         args = parse(arg)
@@ -135,7 +135,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
 
-
 def parse(arg):
     """Convert a series of zero or more numbers to an
     argument list"""
@@ -150,7 +149,6 @@ def parse(arg):
     def help_EOF(self):
         """ help command """
         print("[USAGE] Ctrl + d")
-        
-    
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
