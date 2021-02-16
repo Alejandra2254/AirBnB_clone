@@ -20,7 +20,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_quit(self, input):
         """ exit command  """
-        exit()
+        return True
 
     def do_EOF(self, input):
         """ exit command """
@@ -95,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
             return False
-
+        
     def do_update(self, arg):
         """Update an instance based on the class name, id, attribute & value"""
         args = parse(arg)
@@ -135,11 +135,22 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
 
+
 def parse(arg):
     """Convert a series of zero or more numbers to an
     argument list"""
     return list(map(str, arg.split()))
 
-       
+    """ HELPS """
+
+    def help_quit(self):
+        """ help command """
+        print("[USAGE]:  quit")
+
+    def help_EOF(self):
+        """ help command """
+        print("[USAGE] Ctrl + d")
+        
+    
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
