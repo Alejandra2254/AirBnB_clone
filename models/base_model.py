@@ -15,7 +15,7 @@ class BaseModel:
             date_format = "%Y-%m-%dT%H:%M:%S.%f"
             for key, value in kwargs.items():
                 if key == 'id':
-                    self.id = str(uuid.uuid1())
+                    self.id = value
                 elif key == 'created_at':
                     self.created_at = datetime.strptime(value, date_format)
                 elif key == 'updated_at':
