@@ -153,4 +153,5 @@ def parse(arg):
 
 
 if __name__ == '__main__':
+    """main loop for console"""
     HBNBCommand().cmdloop()
