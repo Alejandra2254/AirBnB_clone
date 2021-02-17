@@ -77,3 +77,29 @@ class TestBasemodel(unittest.TestCase):
         model_1 = User(id=model_id)
         self.assertTrue(isinstance(model_1, BaseModel))
         self.assertEqual(model_id, model_1.id)
+        
+    def test_7_User_class(self):
+        '''If object is correctly a User instance'''
+
+        my_model_0 = User()
+
+        self.assertTrue(type(my_model_0) == User)
+
+    def test_8_BaseModel_child(self):
+        '''If object is correctly a BaseModel child'''
+
+        my_model_0 = User()
+
+        self.assertTrue(issubclass(type(my_model_0), BaseModel) and
+                        type(my_model_0) != BaseModel)
+
+    def test_9_user_type_args(self):
+        '''If object args are of the correct type'''
+
+        my_model_0 = User()
+
+        attbs = storage.class_attributes()['User']
+
+        for key, value in attbs.items():
+            attr = getattr(my_model_0, key)
+            self.assertEqual(type(attr), value)
