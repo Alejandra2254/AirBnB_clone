@@ -141,9 +141,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    ##################
-    # Help Functions #
-    ##################
+    """  Help Functions """
 
     def help_quit(self):
         """[shows command help]"""
@@ -174,9 +172,7 @@ class HBNBCommand(cmd.Cmd):
         print("Usage: update <valid class name>", end="")
         print("<valid id> <attribute name> <attribute value>")
 
-    ##########
-    # call all function
-    #########
+    """  call all function """
 
     def do_User(self, args):
         """[Usages:
