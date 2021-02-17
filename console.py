@@ -115,12 +115,12 @@ class HBNBCommand(cmd.Cmd):
                                 if args[2] in integers:
                                     try:
                                         args[3] = int(args[3])
-                                    except:
+                                    except ValueError:
                                         args[3] = 0
                                 elif args[2] in floats:
                                     try:
                                         args[3] = float(args[3])
-                                    except:
+                                    except ValueError:
                                         args[3] = 0.0
                             setattr(storage.all()[k], args[2], args[3])
                             storage.all()[k].save()
@@ -150,6 +150,7 @@ def parse(arg):
     def help_EOF(self):
         """ help command """
         print("[USAGE] Ctrl + d")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
