@@ -41,4 +41,4 @@ class FileStorage:
         except FileNotFoundError:
             pass
         for key, value in des_dict.items():
-            eval(key.split(".")[0] + '(**value)')
+            self.__objects[key] = eval(value['__class__'])(**value)
