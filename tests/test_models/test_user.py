@@ -93,13 +93,3 @@ class TestBasemodel(unittest.TestCase):
         self.assertTrue(issubclass(type(my_model_0), BaseModel) and
                         type(my_model_0) != BaseModel)
 
-    def test_9_user_type_args(self):
-        '''If object args are of the correct type'''
-
-        my_model_0 = User()
-
-        attbs = storage.class_attributes()['User']
-
-        for key, value in attbs.items():
-            attr = getattr(my_model_0, key)
-            self.assertEqual(type(attr), value)
