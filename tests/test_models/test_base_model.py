@@ -52,6 +52,7 @@ class TestBasemodel(unittest.TestCase):
         self.assertEqual(model_1.__str__(), str_model)
 
     def test_5_dict_method(self):
+        """test to_dict methods return"""
         model_1 = BaseModel()
         model_1.name = "Alejandra"
         model_1.number = 89
