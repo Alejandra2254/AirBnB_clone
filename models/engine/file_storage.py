@@ -35,11 +35,17 @@ class FileStorage:
             file.write(json.dumps(json_dict))
 
     def reload(self):
-        """deserializes the JSON file to __objects"""
+        """ deserialization """
+        classes = {'BaseModel': BaseModel,
+                   'User': User, 'Place': Place,
+                   'State': State, 'City': City,
+                   'Amenity': Amenity, 'Review': Review}
         try:
-            with open(self.__file_path, 'r') as file:
-                des_dict = json.load(file)
-            for key, value in des_dict.items():
-                self.__objects[key] = eval(value['__class__'])(**value)
-        except FileNotFoundError:
+            with open(self.__file_path, 'r') as f1:
+                file_store = json.load(f1)
+                for key, value in file_store.items():
+                    if '__class__' in value:
+                        val = classes[value['__class__']](**value)
+                        self.__objects[key] = val
+        except:
             pass
