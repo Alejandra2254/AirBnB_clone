@@ -187,6 +187,17 @@ class HBNBCommand(cmd.Cmd):
         """
         self.class_exec('User', args)
 
+    def do_BaseModel(self, args):
+        """[Usages:
+        BaseModel.all() - displays all objects of class BaseModel
+        BaseModel.count() - displays number of objects of class BaseModel
+        BaseModel.show(<id>) - displays object of class BaseModel with id
+        BaseModel.destroy(<id>) - deletes object of class BaseModel with id
+        BaseModel.update(id, attribute name, attribute value) - update
+        BaseModel.update(<id>, <dictionary representation>) - update]
+        """
+        self.class_exec('BaseModel', args)
+
 if __name__ == '__main__':
     """main loop for console"""
     HBNBCommand().cmdloop()
