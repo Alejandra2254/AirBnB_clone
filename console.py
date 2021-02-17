@@ -58,10 +58,10 @@ class HBNBCommand(cmd.Cmd):
             if len(line) == 1:
                 print("** instance id missing **")
             if len(line) == 2:
-                    all_objs = storage.all()
-                    key = line[0] + "." + line[1]
-                    obj = all_objs[key]
-                    print(obj)
+                all_objs = storage.all()
+                key = line[0] + "." + line[1]
+                obj = all_objs[key]
+                print(obj)
         else:
             print("** class doesn't exist **")
 
