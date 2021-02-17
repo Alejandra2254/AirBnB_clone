@@ -27,7 +27,7 @@ class Testfilestorage(unittest.TestCase):
         self.assertTrue(my_key in all_objects.keys())
 
     def test_02_serialization(self):
-        '''checks the correct serialization of an object'''
+        """checks the correct serialization of an object"""
         my_model = BaseModel()
         my_model.name = "test_02"
         my_model.my_number = 2
