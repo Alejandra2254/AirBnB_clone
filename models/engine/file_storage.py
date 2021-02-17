@@ -12,6 +12,7 @@ from models.place import Place
 
 
 class FileStorage:
+    """Class file storage"""
     __file_path = 'file.json'
     __objects = {}
 
