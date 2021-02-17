@@ -9,12 +9,12 @@ class Testfilestorage(unittest.TestCase):
     """Class to test file storage class"""
 
     def test_0_all_method(self):
-
+        """Test if method all is dict"""
         dict_objects = storage.all()
         self.assertEqual(type(dict_objects), dict)
     
     def test_1_create_new_method(self):
-
+        """Test to create a new method and save it"""
         my_model = BaseModel()
         my_model.name = "Valeria"
         my_model.number = 90
