@@ -58,13 +58,12 @@ class HBNBCommand(cmd.Cmd):
             if len(line) == 1:
                 print("** instance id missing **")
             if len(line) == 2:
-                try:
                     all_objs = storage.all()
                     key = line[0] + "." + line[1]
                     obj = all_objs[key]
                     print(obj)
-                except KeyError:
-                    print("** class doesn't exist **")
+        else:
+            print("** class doesn't exist **")
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name and id"""
