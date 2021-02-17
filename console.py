@@ -139,6 +139,39 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+    ##################
+    # Help Functions #
+    ##################
+
+    def help_quit(self):
+        """[shows command help]"""
+        print("Quit command to exit the program")
+
+    def help_EOF(self):
+        """ [shows command help]"""
+        print("CTRL + D (EOF) to exit the program")
+
+    def help_create(self):
+        """[show help for create command]"""
+        print("Usage: create <valid class name>")
+
+    def help_show(self):
+        """[show help for show command]"""
+        print("Usage: show <valid class name> <valid id>")
+
+    def help_destroy(self):
+        """[show help for destroy command]"""
+        print("Usage: destroy <valid class name> <valid id>")
+
+    def help_all(self):
+        """[show help for all command]"""
+        print("Usage: all OR all <valid class name>")
+
+    def help_update(self):
+        """[show help for update update command]"""
+        print("Usage: update <valid class name>", end="")
+        print("<valid id> <attribute name> <attribute value>")
+
 if __name__ == '__main__':
     """main loop for console"""
     HBNBCommand().cmdloop()
