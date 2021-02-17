@@ -41,3 +41,21 @@ class Testfilestorage(unittest.TestCase):
 
         exp_dict = json_dict[my_key]
         self.assertEqual(my_model.to_dict(), exp_dict)
+
+    def test_03_deserialization(self):
+        '''checks the correct deserialization of an object'''
+
+        # this test depends on test_02_serialization
+        # the json file must be present in the directory
+        my_obj = FileStorage()
+        my_obj.reload()  # here happens the deserialization
+        all_objs = my_obj.all()
+        test_obj = list(all_objs.values())[0]
+        my_key = str(type(test_obj).__name__) + "." + str(test_obj.id)
+
+        json_file = "file.json"  # storage.__file_path
+        with open(json_file, "r", encoding='utf-8') as f:
+            json_dict = json.load(f)
+        exp_dict = json_dict[my_key]
+
+        self.assertEqual(test_obj.to_dict(), exp_dict)
