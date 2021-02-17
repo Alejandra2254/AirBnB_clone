@@ -10,16 +10,17 @@ from models.state import State
 from models.amenity import Amenity
 from models.review import Review
 from models.place import Place
+
 classes = {"BaseModel": BaseModel, "User": User, "City": City, "State": State,
            "Amenity": Amenity, "Review": Review, "Place": Place}
 
 
 class HBNBCommand(cmd.Cmd):
     """commands"""
-    prompt = "(hbnb) "
+    prompt = '(hbnb) '
 
     def do_quit(self, input):
-        """ exit command  """
+        """ Quit command to exit the program """
         return True
 
     def do_EOF(self, input):
@@ -95,7 +96,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
             return False
-        
+
     def do_update(self, arg):
         """Update an instance based on the class name, id, attribute & value"""
         args = parse(arg)
@@ -135,7 +136,6 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
 
-
 def parse(arg):
     """Convert a series of zero or more numbers to an
     argument list"""
@@ -150,7 +150,6 @@ def parse(arg):
     def help_EOF(self):
         """ help command """
         print("[USAGE] Ctrl + d")
-        
-    
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
