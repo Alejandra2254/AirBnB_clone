@@ -172,6 +172,21 @@ class HBNBCommand(cmd.Cmd):
         print("Usage: update <valid class name>", end="")
         print("<valid id> <attribute name> <attribute value>")
 
+    ##########
+    # call all function
+    #########
+
+    def do_User(self, args):
+        """[Usages:
+        User.all() - displays all objects of class User
+        User.count() - displays number of objects of class User
+        User.show(<id>) - displays object of class User with id
+        User.destroy(<id>) - deletes object of class User with id
+        User.update(id, attribute name, attribute value) - update User
+        User.update(<id>, <dictionary representation>) - update User]
+        """
+        self.class_exec('User', args)
+
 if __name__ == '__main__':
     """main loop for console"""
     HBNBCommand().cmdloop()
