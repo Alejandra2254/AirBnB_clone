@@ -189,7 +189,7 @@ class HBNBCommand(cmd.Cmd):
         """
         self.class_exec('User', args)
 
-     def do_BaseModel(self, args):
+    def do_BaseModel(self, args):
         """[Usages:
         BaseModel.all() - displays all objects of class BaseModel
         BaseModel.count() - displays number of objects of class BaseModel
