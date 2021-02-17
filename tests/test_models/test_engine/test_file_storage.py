@@ -5,6 +5,7 @@ import json
 from models import storage
 from models.base_model import BaseModel
 
+
 class Testfilestorage(unittest.TestCase):
     """Class to test file storage class"""
 
@@ -12,7 +13,7 @@ class Testfilestorage(unittest.TestCase):
         """Test if method all is dict"""
         dict_objects = storage.all()
         self.assertEqual(type(dict_objects), dict)
-    
+
     def test_1_create_new_method(self):
         """Test to create a new method and save it"""
         my_model = BaseModel()
@@ -24,7 +25,7 @@ class Testfilestorage(unittest.TestCase):
         self.assertNotEqual(all_objects, {})
         my_key = str(type(my_model).__name__) + "." + str(my_model.id)
         self.assertTrue(my_key in all_objects.keys())
-    
+
     def test_02_serialization(self):
         '''checks the correct serialization of an object'''
         my_model = BaseModel()
@@ -40,6 +41,3 @@ class Testfilestorage(unittest.TestCase):
 
         exp_dict = json_dict[my_key]
         self.assertEqual(my_model.to_dict(), exp_dict)
-
-
-        
