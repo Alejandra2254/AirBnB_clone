@@ -60,3 +60,8 @@ class Testfilestorage(unittest.TestCase):
         exp_dict = json_dict[my_key]
 
         self.assertEqual(test_obj.to_dict(), exp_dict)
+
+    def test_04(self):
+        """Checks if correct error Rises."""
+        with self.assertRaises(AttributeError):
+            storage.new(None)
