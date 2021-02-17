@@ -38,7 +38,7 @@ class FileStorage:
         try:
             with open(self.__file_path, 'r') as file:
                 des_dict = json.load(file)
+            for key, value in des_dict.items():
+                self.__objects[key] = eval(value['__class__'])(**value)
         except FileNotFoundError:
             pass
-        for key, value in des_dict.items():
-            self.__objects[key] = eval(value['__class__'])(**value)
