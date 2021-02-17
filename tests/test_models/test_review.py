@@ -10,7 +10,7 @@ from models.base_model import BaseModel
 from models.review import Review
 
 
-class TestBasemodel(unittest.TestCase):
+class TestReview(unittest.TestCase):
     """Class to test the BaseModel Class"""
 
     def test_0__id(self):

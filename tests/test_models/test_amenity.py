@@ -10,7 +10,7 @@ from models.base_model import BaseModel
 from models.amenity import Amenity
 
 
-class TestBasemodel(unittest.TestCase):
+class TestAmenity(unittest.TestCase):
     """Class to test the BaseModel Class"""
 
     def test_0__id(self):
