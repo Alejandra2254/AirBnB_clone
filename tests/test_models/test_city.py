@@ -77,3 +77,14 @@ class TestCity(unittest.TestCase):
         model_1 = City(id=model_id)
         self.assertTrue(isinstance(model_1, BaseModel))
         self.assertEqual(model_id, model_1.id)
+    
+    def test_6_atributes(self):
+        """
+        Checks dict method
+        """
+        my_model = City()
+        state_id = my_model.state_id
+        name = my_model.name
+        self.assertEqual(state_id, "")
+        self.assertEqual(name, "")
+

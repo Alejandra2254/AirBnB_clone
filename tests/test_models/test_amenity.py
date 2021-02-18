@@ -77,3 +77,11 @@ class TestAmenity(unittest.TestCase):
         model_1 = Amenity(id=model_id)
         self.assertTrue(isinstance(model_1, BaseModel))
         self.assertEqual(model_id, model_1.id)
+    
+    def test_7_atributes(self):
+        """
+        Checks dict method
+        """
+        my_model = Amenity()
+        name = my_model.name
+        self.assertEqual(name, "")
