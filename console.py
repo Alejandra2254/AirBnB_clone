@@ -14,10 +14,12 @@ from models.place import Place
 classes = {"BaseModel": BaseModel, "User": User, "City": City, "State": State,
            "Amenity": Amenity, "Review": Review, "Place": Place}
 
+
 def parse(arg):
     """Convert a series of zero or more numbers to an
     argument list"""
     return list(map(str, arg.split()))
+
 
 class HBNBCommand(cmd.Cmd):
     """commands"""
@@ -140,6 +142,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
+
 
 if __name__ == '__main__':
     """main loop for console"""
