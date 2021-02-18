@@ -99,4 +99,10 @@ class TestUser(unittest.TestCase):
         """
         my_model = User()
         email_model = my_model.email
+        password_model = my_model.password
+        first_name = my_model.first_name
+        last_name = my_model.last_name
         self.assertEqual(email_model, "")
+        self.assertEqual(password_model, "")
+        self.assertEqual(first_name, "")
+        self.assertEqual(last_name, "")
