@@ -76,3 +76,11 @@ class TestBasemodel(unittest.TestCase):
         model_1 = BaseModel(id=model_id)
         self.assertTrue(isinstance(model_1, BaseModel))
         self.assertEqual(model_id, model_1.id)
+    
+    def test_5_save_method(self):
+        """save method"""
+        model_1 = BaseModel()
+        update_save = model_1.updated_at
+        model_1.updated_at = datetime.utcnow()
+        my_model_dict = model_1.to_dict()
+        self.assertTrue(update_save, my_model_dict['updated_at'])

@@ -27,7 +27,7 @@ class Testfilestorage(unittest.TestCase):
         my_key = str(type(my_model).__name__) + "." + str(my_model.id)
         self.assertTrue(my_key in all_objects.keys())
 
-    def test_02_serialization(self):
+    def test_2_serialization(self):
         """checks the correct serialization of an object"""
         my_model = BaseModel()
         my_model.name = "test_02"
@@ -43,7 +43,7 @@ class Testfilestorage(unittest.TestCase):
         exp_dict = json_dict[my_key]
         self.assertEqual(my_model.to_dict(), exp_dict)
 
-    def test_03_deserialization(self):
+    def test_3_deserialization(self):
         '''checks the correct deserialization of an object'''
 
         # this test depends on test_02_serialization
@@ -61,7 +61,24 @@ class Testfilestorage(unittest.TestCase):
 
         self.assertEqual(test_obj.to_dict(), exp_dict)
 
-    def test_04(self):
+    def test_4(self):
         """Checks if correct error Rises."""
         with self.assertRaises(AttributeError):
             storage.new(None)
+    
+    def test_5_objects_not_empty(self):
+        """checks if class attribute __objects fills after model instance"""
+        my_model = BaseModel()
+        my_model.name = "test_01"
+        my_model.my_number = 1
+        my_obj = FileStorage()
+        my_obj.reload()
+        all_objs = my_obj.all()
+
+        # check if __objects is not empty
+        self.assertNotEqual(all_objs, {})
+
+        # check the correct key of the object
+        my_key = str(type(my_model).__name__) + "." + str(my_model.id)
+        self.assertTrue(my_key in all_objs.keys())
+
