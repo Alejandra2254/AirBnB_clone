@@ -84,3 +84,43 @@ class TestBasemodel(unittest.TestCase):
         model_1.updated_at = datetime.utcnow()
         my_model_dict = model_1.to_dict()
         self.assertTrue(update_save, my_model_dict['updated_at'])
+    
+    def test_created_and_updated_at(self):
+        """
+        Checks if updated_t attribute changes when a new attribute is
+        added to the object and created_at is the same all the time.
+        """
+        # Checks that updated_at changes
+        model = BaseModel()
+        updated_1 = str(model.updated_at)
+        model.name = "Betty"
+        model.save()
+        updated_2 = str(model.updated_at)
+        self.assertNotEqual(updated_1, updated_2)
+
+        # Checks that created_at doesn't change
+        model = BaseModel()
+        created_1 = str(model.created_at)
+        model.last_name = "Holberton"
+        model.save()
+        created_2 = str(model.created_at)
+        self.assertEqual(created_1, created_2)
+
+    def test_add_new_attributes(self):
+        """
+        Checks that can add new attributes to the objects
+        """
+        # Checks new attributes are added
+        dict_attr = {'name': 'Betty', 'last': 'Holberton', 'age': 40}
+        model = BaseModel()
+        for key, value in dict_attr.items():
+            setattr(model, key, value)
+        for key, value in dict_attr.items():
+            self.assertTrue(hasattr(model, key))
+            self.assertEqual(getattr(model, key), value)
+
+        # Checks for all attributes for the object
+        my_attrs = ['id', 'created_at', 'updated_at', 'name', 'last', 'age']
+        for attr in my_attrs:
+            self.assertEqual(attr in model.__dict__.keys(), True)
+

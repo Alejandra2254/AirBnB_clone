@@ -82,23 +82,3 @@ class Testfilestorage(unittest.TestCase):
         my_key = str(type(my_model).__name__) + "." + str(my_model.id)
         self.assertTrue(my_key in all_objs.keys())
 
-    def test_created_and_updated_at(self):
-        """
-        Checks if updated_t attribute changes when a new attribute is
-        added to the object and created_at is the same all the time.
-        """
-        # Checks that updated_at changes
-        model = BaseModel()
-        updated_1 = str(model.updated_at)
-        model.name = "Betty"
-        model.save()
-        updated_2 = str(model.updated_at)
-        self.assertNotEqual(updated_1, updated_2)
-
-        # Checks that created_at doesn't change
-        model = BaseModel()
-        created_1 = str(model.created_at)
-        model.last_name = "Holberton"
-        model.save()
-        created_2 = str(model.created_at)
-        self.assertEqual(created_1, created_2)
