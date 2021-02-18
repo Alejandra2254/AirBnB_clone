@@ -77,3 +77,15 @@ class TestReview(unittest.TestCase):
         model_1 = Review(id=model_id)
         self.assertTrue(isinstance(model_1, BaseModel))
         self.assertEqual(model_id, model_1.id)
+    
+    def test_7_atributes(self):
+        """
+        Checks dict method
+        """
+        my_model = Review()
+        place_id = my_model.place_id
+        user_id = my_model.user_id
+        text = my_model.text
+        self.assertEqual(place_id, "")
+        self.assertEqual(user_id, "")
+        self.assertEqual(text, "")

@@ -77,3 +77,31 @@ class TestPlace(unittest.TestCase):
         model_1 = Place(id=model_id)
         self.assertTrue(isinstance(model_1, BaseModel))
         self.assertEqual(model_id, model_1.id)
+    
+    def test_7_atributes(self):
+        """
+        Checks dict method
+        """
+        my_model = Place()
+        city_id = my_model.city_id
+        user_id = my_model.user_id
+        name = my_model.name
+        description = my_model.description
+        number_rooms = my_model.number_rooms
+        number_bathrooms = my_model.number_bathrooms
+        max_guest = my_model.max_guest
+        price_by_night = my_model.price_by_night
+        latitude = my_model.latitude
+        longitude = my_model.longitude
+        amenity_ids = my_model.amenity_ids
+        self.assertEqual(city_id, "")
+        self.assertEqual(user_id, "")
+        self.assertEqual(name, "")
+        self.assertEqual(description, "")
+        self.assertEqual(number_rooms, 0)
+        self.assertEqual(number_bathrooms, 0)
+        self.assertEqual(max_guest, 0)
+        self.assertEqual(price_by_night, 0)
+        self.assertEqual(latitude, 0.0)
+        self.assertEqual(longitude, 0.0)
+        self.assertEqual(amenity_ids, [])
