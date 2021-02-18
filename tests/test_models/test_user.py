@@ -93,48 +93,10 @@ class TestUser(unittest.TestCase):
         self.assertTrue(issubclass(type(my_model_0), BaseModel) and
                         type(my_model_0) != BaseModel)
 
-    def test_to_dict_method(self):
+    def test_6_atributes(self):
         """
         Checks dict method
         """
-        # Checks if it convert to a dict type
-        my_user = User()
-        my_user.name = "Holberton"
-        my_user.my_number = 89
-        my_user.my_float = 100.54
-        my_user.my_list = ["Hello", "world", 100]
-        my_user.my_dict = {'name': 'Betty',
-                           'last_name': 'Holberton', 'age': 85}
-        my_user.save()
-        my_user_json = my_user.to_dict()
-        # checks if the method really convert to a dict type all the attributes
-        self.assertEqual(type(my_user_json), dict)
-        for key, value in my_user_json.items():
-            # checks if the dict has the same attributes keys that the object
-            self.assertTrue(hasattr(my_user, key))
-            # checks if datetime was safe as a iso format and its type
-            if key == "created_at" or key == "updated_at":
-                _datetime = getattr(my_user, key).isoformat()
-                self.assertEqual(_datetime, value)
-                self.assertTrue(type(value) == str)
-            # checks the class name attribute and its type
-            elif key == "__class__":
-                self.assertEqual(my_user.__class__.__name__, value)
-                self.assertTrue(type(value) == str)
-            else:
-                # checks the value for others attributes
-                self.assertEqual(getattr(my_user, key), value)
-                # Checks the types and formats of the attributes
-                if key == "id":
-                    version = uuid.UUID(value).version
-                    self.assertTrue(type(value), str)
-                elif key == "name":
-                    self.assertTrue(type(value) == str)
-                elif key == "my_number":
-                    self.assertTrue(type(value) == int)
-                elif key == "my_list":
-                    self.assertTrue(type(value) == list)
-                elif key == "my_float":
-                    self.assertTrue(type(value) == float)
-                elif key == "my_dict":
-                    self.assertTrue(type(value) == dict)
+        my_model = User()
+        email_model = my_model.email
+        self.assertEqual(email_model, "")
