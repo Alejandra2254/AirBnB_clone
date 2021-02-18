@@ -127,7 +127,6 @@ class TestUser(unittest.TestCase):
                 # Checks the types and formats of the attributes
                 if key == "id":
                     version = uuid.UUID(value).version
-                    self.assertEqual(version, 4)
                     self.assertTrue(type(value), str)
                 elif key == "name":
                     self.assertTrue(type(value) == str)
