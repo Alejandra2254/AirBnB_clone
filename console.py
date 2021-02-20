@@ -142,8 +142,20 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
         else:
             print("** class doesn't exist **")
+    
+    def do_count(self, arg):
+        """
+            <-   Counts all string representation of instances:   ->
+            <-            Usage: count <class name>               ->
+            <-               Ex: count BaseModel                  ->
+            <-  if success number of instances will be printed    ->\n"""
+        all_objs = storage.all()
+        counter = 0
+        for obj in all_objs:
+            if arg == obj.split(".")[0]:
+                counter += 1
+        print(counter)
 
 
-if __name__ == '__main__':
-    """main loop for console"""
-    HBNBCommand().cmdloop()
+"""main loop for console"""
+HBNBCommand().cmdloop()
