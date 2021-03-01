@@ -1,0 +1,12 @@
+/* Style the header */
+header {
+    height: 70px;
+    width: 100%;
+    background-color:#FF0000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+   }
+header img {
+    left: 20px;
+}
